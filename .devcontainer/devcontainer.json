@@ -1,0 +1,62 @@
+{
+    "name": "Typescript + React + Vite + TailwindCSS Web App",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "workspace",
+    // docker-compose.ymlにserviceを追加した場合は、ここにservice名を追加する
+    "runServices": ["workspace"],
+    // docker-in-dockerではrootユーザーでコンテナを起動、実行する必要がある
+    "containerUser": "root",
+    "features": {
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "lts"
+      },
+      "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "workspaceFolder": "/app",
+    "forwardPorts": [5173],
+    "postCreateCommand": "/bin/bash ./.devcontainer/postCreateCommand.sh",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          // frontend
+          "dsznajder.es7-react-js-snippets",
+          "formulahendry.auto-close-tag",
+          "formulahendry.auto-rename-tag",
+          "bradlc.vscode-tailwindcss",
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode",
+          // common
+          "oderwat.indent-rainbow",
+          "streetsidesoftware.code-spell-checker",
+          "mosapride.zenkaku",
+          "github.vscode-github-actions",
+          "yzhang.markdown-all-in-one",
+          "bierner.markdown-mermaid",
+          "GitHub.vscode-pull-request-github"
+        ],
+        "settings": {
+          "eslint.workingDirectories": ["../frontend"],
+          // デフォルトタブサイズは2なので言語ごとに変更したい場合は、言語ごとに設定を上書きしてください
+          "editor.tabSize": 2,
+          "editor.insertSpaces": true,
+          "[typescript][typescriptreact][html]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+              "source.organizeImports": "explicit",
+              "source.addMissingImports": "explicit",
+              "source.fixAll.eslint": "explicit"
+            }
+          },
+          // code spell checker を無効にするパス
+          // 個別のワードを無視する場合は、cSpell.wordsに追加してください
+          // 例: "cSpell.words": ["example"]
+          "cSpell.ignorePaths": [".devcontainer/devcontainer.json", ".vscode"],
+          "[json][jsonc]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+          }
+        }
+      }
+    }
+  }

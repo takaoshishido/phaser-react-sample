@@ -1,0 +1,11 @@
+services:
+  workspace:
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ../
+        target: /app
+    tty: true
+    privileged: true
+    init: true
