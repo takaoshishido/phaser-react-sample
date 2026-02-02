@@ -35,6 +35,7 @@ export class MonsterFireScene extends Scene {
         const centerY = this.cameras.main.height / 2;
 
         const monster = this.add.sprite(centerX, centerY, 'monsterHeat', 'monster-heat3.png');
+        monster.setScale(1/3)
         monster.play('fire-breath');
     }
 }

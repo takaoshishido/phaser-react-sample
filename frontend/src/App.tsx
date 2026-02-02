@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import HeatLionRun from './HeatLionRun';
 import MonsterGame from './MonsterGame';
 import { IRefPhaserGame, PhaserGame } from './PhaserGame';
 
@@ -20,6 +21,7 @@ function App()
     return (
         <div id="app">
             <MonsterGame />
+            <HeatLionRun />
             <PhaserGame ref={phaserRef} currentActiveScene={currentScene} />
         </div>
     )
